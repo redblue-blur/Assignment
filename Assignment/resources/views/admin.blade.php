@@ -74,9 +74,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
+  <h2>Note:Delete all compatibility before deleting Cpu or Motherboard</h2>
 <div class="row">
   <div class="col-md-4 text-center">
   <div>
+    <h3>CPU Table</h3>
     <table class="table">
       <thead>
           <tr>
@@ -127,6 +129,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
   <div class="col-md-4 text-center">
   <div>
+    <h3>Motherboard Table</h3>
     <table class="table">
       <thead>
           <tr>
@@ -176,6 +179,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   </div>
   <div class="col-md-4 text-center">
   <div>
+    <h3>Compatibility Table</h3>
     <table class="table">
       <thead>
           <tr>
@@ -187,8 +191,24 @@ body {font-family: Arial, Helvetica, sans-serif;}
       @foreach($compatibility as $c)
       <tbody>
           <tr>
-            <th>{{$cpu[$c->cpu_id-1]->name}}</th>
-            <th>{{$motherboard[$c->motherboard_id-1]->name}}</th>
+          <th>
+                @foreach($cpu as $cp)
+                <?php
+                if ($cp->id == $c->cpu_id) {
+                  echo $cp->name;
+                }
+                ?>
+                @endforeach
+              </th>
+              <th>
+                @foreach($motherboard as $m)
+                <?php
+                if ($m->id == $c->motherboard_id) {
+                  echo $m->spec_detail;
+                }
+                ?>
+                @endforeach
+              </th>
             <th>
               <a href="{{route('compatibility.delete',['id'=>$c->id])}}">
                 <button class="btn btn-danger">Delete</button>

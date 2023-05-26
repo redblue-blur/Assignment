@@ -88,6 +88,8 @@ class CPUcontroller extends Controller
     {
         $motherboard = Motherboard::where('name', '=', $request['motherboard_name'])->first();
         $cpu = CPU::where('name', '=', $request['cpu_name'])->first();
+        Log::info($motherboard);
+        Log::info($cpu);
         if (!is_null($motherboard) && !is_null($cpu)) {
             $compatibilityData = [
                 'cpu_id' => $cpu->id,

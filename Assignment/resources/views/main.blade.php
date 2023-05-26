@@ -35,15 +35,31 @@
 <table class="table">
         <thead>
             <tr>
-                <th>cpu_id</th>
-                <th>motherboard_id</th>
+                <th>cpu_name</th>
+                <th>motherboard_name</th>
             </tr>
         </thead>
         @foreach($compatibility as $c)
         <tbody>
             <tr>
-                <th>{{$cpu[$c->cpu_id-1]->name}}</th>
-                <th>{{$motherboard[$c->motherboard_id-1]->name}}</th>
+              <th>
+                @foreach($cpu as $cp)
+                <?php
+                if ($cp->id == $c->cpu_id) {
+                  echo $cp->name;
+                }
+                ?>
+                @endforeach
+              </th>
+              <th>
+                @foreach($motherboard as $m)
+                <?php
+                if ($m->id == $c->cpu_id) {
+                  echo $m->name;
+                }
+                ?>
+                @endforeach
+              </th>
             </tr>
         </tbody>
         @endforeach
