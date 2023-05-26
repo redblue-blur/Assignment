@@ -204,7 +204,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 @foreach($motherboard as $m)
                 <?php
                 if ($m->id == $c->motherboard_id) {
-                  echo $m->spec_detail;
+                  echo $m->name;
                 }
                 ?>
                 @endforeach
