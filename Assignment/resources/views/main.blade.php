@@ -54,7 +54,7 @@
               <th>
                 @foreach($motherboard as $m)
                 <?php
-                if ($m->id == $c->cpu_id) {
+                if ($m->id == $c->motherboard_id) {
                   echo $m->name;
                 }
                 ?>
